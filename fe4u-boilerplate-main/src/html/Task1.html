@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Лабораторная робота №1 с 4 подпунктами">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Project</title>
+
+</head>
+<body>
+
+<h1>Task 1</h1>
+<hr>
+
+<h2> Form for add teacher</h2>
+<div>Створити html файл з формою для додавання викладача. Форма
+    повинна містити наступні поля: Повне ім’я, стать, дата народження, email,
+    телефон, бажаний колір фону, країна, місто, коментар.
+</div>
+<hr>
+<form name="add_teacher"></form>
+
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="lname"><br>
+
+<label for="gender">Choose a gender:</label>
+<select id="gender" name="gender">
+    <option value="male">male</option>
+    <option value="female">female</option>
+    <option value="not_specify">not specify</option>
+</select> <br>
+<label for="fbirth"> Date of birth: </label> <br>
+<input type="date" id="fbirth" name="fbirth"> <br>
+
+<label for="femail">Email:</label><br>
+<input type="email" id="femail" name="femail"><br>
+
+<label for="fbestbackgroung">Your color for background:</label>
+<select id="fbestbackgroung" name="fbestbackgroung"><br>
+    <option value="#EB4444">red</option>
+    <option value="#5D998B">green</option>
+    <option value="#2B4D8D">blue</option>
+</select> <br>
+<label for="ftelephone">Telephone:</label><br>
+<input type="tel" id="ftelephone" name="ftelephone"><br>
+
+<label for="fcountry">Country:</label><br>
+<input type="text" id="fcountry" name="fcountry"><br>
+
+<label for="fcity">City:</label><br>
+<input type="text" id="fcity" name="fcity"><br>
+
+<label for="fmessage">Message:</label><br>
+<textarea name="message" id="fmessage" rows="10" cols="30"></textarea>
+<br><br>
+<input value="Add" type="submit">
+</form>
+
+</body>
