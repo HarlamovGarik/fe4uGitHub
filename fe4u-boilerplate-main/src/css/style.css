@@ -132,7 +132,7 @@ div.container > div.selected {
 }
 
 div.popup-teacher-info {
-  max-width: max(500px, 45vmax);
+  max-width: max(400px, 45vmax);
   background-color: #ddd;
 }
 
@@ -209,7 +209,7 @@ div.info {
 
 div.infoImg {
   margin-bottom: 15px;
-  flex: 40%;
+  width: 200px;
 }
 
 div.infoText {
