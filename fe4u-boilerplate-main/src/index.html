@@ -13,7 +13,7 @@
     <meta name="keywords" content="Teacher,Site,TopTeacher,Teachinder,learn,web course">
     <meta name="author" content="Igor Kharlamov">
 
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/avatar-wrapper.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -106,20 +106,20 @@
                         <!--                        <label for="color">Choose color:</label>-->
                         <!--                        <input type="color" id="color" name="color"><br>-->
                         <div style="padding: 3px 2px;" class="flex">
-                            <label for="gender">Sex:</label>
+                            <label>Sex:</label>
                             <div class="flex">
-                                <input type="radio" id="gender" name="gender" value="male" checked>
-                                <label>male</label>
+                                <input type="radio" id="maleGender" name="gender" value="male" checked>
+                                <label for="maleGender">male</label>
                             </div>
                             <div class="flex">
-                                <input type="radio" name="gender" value="female">
-                                <label>female</label>
+                                <input type="radio" id="femaleGender" name="gender" value="female">
+                                <label for="femaleGender">female</label>
                             </div>
                         </div>
 
 
                         <div class="row100 row">
-                            <label for="about">Notes(option):</label>
+                            <label for="note">Notes(option):</label>
                             <textarea name="note" id="note" rows="4" maxlength="150"
                                       placeholder="I can interest students ..."></textarea>
                         </div>
@@ -139,7 +139,7 @@
     </div>
 
 </div>
-<div class="modal" id="modal-info" style="display: none">
+<div class="modal" id="modal-info" style="display: none;">
 
     <div class="popup-menu popup-teacher-info">
         <header class="flex popup">
@@ -153,7 +153,7 @@
             <div class="infoImg">
                 <img alt="avatar" src="./images/двекиси.jpg" class="avatar">
             </div>
-            <div id="updateInfo" style="line-height: 150%">
+            <div id="updateInfo" style="line-height: 150%;">
                 <h4>
                     Igor Kharlamov
                 </h4>
