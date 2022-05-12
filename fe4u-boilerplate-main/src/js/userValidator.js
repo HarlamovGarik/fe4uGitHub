@@ -3,8 +3,7 @@ const regular_exp = {
     string: /^[\p{Lu}]{1}[\p{Ll}]+$/u,
     email: /^[^\W\d_]\w+@\w+\.\w+(\.\w+)?$/,
     phoneNumber: /(\+)?([- _():=+]?\d[- _():=+]?){8,14}/,
-    date: /^\d{1,4}-(0(?=[1-9])|1(?=[0-2]))[0-9]-(0(?=[1-9])|(1|2)(?=[0-9])|3(?=[0-1]))[0-9]T((0|1|2)(?=[0-9]))[0-9]:((0|1|2|3|4|5)(?=[0-9]))[0-9]:((0|1|2|3|4|5)(?=[0-9]))[0-9]\.[0-9]{1,3}Z$/,
-}
+   }
 const validString = (str) => regular_exp.string.test(str);
 
 const validArrStrings = (strArr) => strArr.every((str) => validString(str) === true);
