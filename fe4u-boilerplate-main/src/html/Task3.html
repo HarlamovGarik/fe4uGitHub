@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Лабораторная робота №1 с 4 подпунктами">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Project</title>
+
+</head>
+    <style>
+        [data-value]::after{
+            content: attr(data-value);
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task 3</h1>
+    <hr>
+    
+    <h2> Card for teacher</h2>
+    <div> "Створити html файл з компонентом «повна версія картки
+        викладача» з полями: Повне ім’я, стать, вік, email, телефон, країна, місто,
+        коментар та карта. Додати до компонента data-attribute з кольором фону.
+        Виконуючи завдання використовувати відповідні семантичні теги."
+        </div>
+    <hr>
+    <div id="card_for_teacher">    
+    <p data-value="Igor">First Name: </p>
+    <p data-value="Kharlamov">Last Name: </p>
+    <p data-value=" male">Gender: </p>
+    <p data-value=" 19">Years: </p>
+    <p type="email" data-value=" Flur@gmail.com">Email: </p>
+    <p type="tel" data-value=" 380969837826">Telephone: </p>
+    <p data-value=" Ukraine">Country: </p>
+    <p data-value=" Kryvoi Rog">City: </p>
+    <p data-value=" Русский корабль иди нахуй">Message: </p>
+    </div>
+</body>

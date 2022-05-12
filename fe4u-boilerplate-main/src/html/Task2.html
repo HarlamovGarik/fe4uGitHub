@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Лабораторная робота №1 с 4 подпунктами">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Project</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    div.card_lecturer {
+        border: 1px solid #ccc;
+    }
+
+    div.card_lecturer:hover {
+        border: 1px solid black;
+    }
+
+    div.card_lecturer img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+        color: white;
+
+    }
+
+    div.show_more {
+        position: absolute;
+        bottom: 12px;
+        right: 10px;
+    }
+
+    div.show_more a {
+        text-decoration: none;
+        color: white;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .responsive {
+        position: relative;
+        padding: 5px;
+        margin-right: 10px;
+        float: left;
+        width: 12vmax;
+        background-color: rgb(71, 71, 71);
+    }
+
+    img {
+        aspect-ratio: 1/1.75;
+        display: block;
+        inline-size: 100%;
+        object-fit: cover;
+
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+</head>
+
+<body>
+    <h1>Task 2</h1>
+    <hr>
+
+    <h2> Card for teacher</h2>
+    <div> Створити html файл з компонентом «компактний варіант картки
+        викладача». Компонент повинен містити лише зображення та повне ім’я +
+        "докладніше"
+    </div>
+    <hr>
+    <div class="responsive">
+        <div class="card_lecturer">
+            <a target="_blank" href="https://uk.wikipedia.org/wiki/%D0%90%D1%80%D1%85%D1%96%D0%BC%D0%B5%D0%B4">
+                <img src="./gallery/архимед.jpg" alt="Архимед">
+            </a>
+            <div class="desc">
+                <h3>Архімед</h3>
+            </div>
+            <div class="show_more"><a
+                    href="https://uk.wikipedia.org/wiki/%D0%90%D1%80%D1%85%D1%96%D0%BC%D0%B5%D0%B4">Докладніше</a>
+            </div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="card_lecturer">
+            <a target="_blank" href="https://uk.wikipedia.org/wiki/%D0%A1%D0%BE%D0%BB%D0%BE%D0%BD">
+                <img src="./gallery/солон.jpg" alt="Солон">
+            </a>
+            <div class="desc">
+                <h3>Солон</h3>
+            </div>
+            <div class="show_more"><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%BE%D0%BB%D0%BE%D0%BD">Докладніше</a>
+            </div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="card_lecturer">
+            <a target="_blank" href="https://uk.wikipedia.org/wiki/%D0%94%D0%B5%D0%BC%D0%BE%D0%BA%D1%80%D1%96%D1%82">
+                <img src="./gallery/демокрит.jpg" alt="Демокрит" >
+            </a>
+            <div class="desc">
+                <h3>Демокріт</h3>
+            </div>
+            <div class="show_more"><a
+                    href="https://uk.wikipedia.org/wiki/%D0%94%D0%B5%D0%BC%D0%BE%D0%BA%D1%80%D1%96%D1%82">Докладніше</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</body>
+
+</html>
