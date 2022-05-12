@@ -1,20 +1,540 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="eng">
 
-   <head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-tap-highlight" content="no">
 
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="msapplication-tap-highlight" content="no">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teachinder</title>
 
-      <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="уникальный сайт учителей с разных стран мира">
+    <meta name="keywords" content="Teacher,Site,TopTeacher,Teachinder,learn,web course">
+    <meta name="author" content="Igor Kharlamov">
 
-      <link rel="stylesheet" href="./css/app.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-   </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/88c44a0b03.js" crossorigin="anonymous"></script>
+</head>
 
-   <body>
+<body>
+<div class="modal" id="modal-menu">
+    <div class="popup-menu popup-add-teacher" id="popupaddteacher">
+        <header class="flex popup">
+            <h2>
+                Add teachers
+            </h2>
+            <div class="icon-content">
+                <i class="fa-solid fa-arrow-right-arrow-left toggle" style="font-size: 24px; cursor: pointer;"
+                   id="swap"></i>
+                <i class="fa-solid fa-xmark close" style="font-size: 32px; cursor: pointer; margin-left: 10px;"></i>
+            </div>
 
-  </body>
+        </header>
+        <div class="container">
+            <div class="right-bar sidebar">
+                <div class="avatar-wrapper">
+                    <img class="profile-pic" src="">
+                    <div class="upload-button">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </div>
+                    <input class="file-upload" type="file" accept="image/*" style="display: none;"/>
+                </div>
+            </div>
+            <div class="left-bar sidebar">
+                <div class="user-input">
+                    <form id="addTeacher" name="addTeacher">
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="name">First name:</label>
+                                <input type="text" id="name" name="name" required maxlength="8">
+                            </div>
+
+                            <div class="row50 row">
+                                <label for="lastname">Second name:</label>
+                                <input type="text" id="lastname" name="lastname" required maxlength="10">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <div style="width: 19%;" class="row">
+                                <label for="fday">Day: </label>
+                                <input type="text" maxlength="2" pattern="[0-9]{2}" id="fday" name="fday" required>
+                            </div>
+                            <div style="width: 49%;" class="row">
+                                <label for="fmonth">Month: </label>
+                                <select id="fmonth" name="fmonth">
+                                </select>
+                            </div>
+
+                            <div style="width: 39%;" class="row">
+                                <label for="fyear">Year: </label>
+                                <select id="fyear" name="fyear">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row100 row">
+                            <label for="specialty"> Сhoose specialty: </label>
+                            <select id="specialty" name="specialty">
+                                <option value="Mathmeamatics">Mathmematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Chemistry">Chemistry
+                                </option>
+                            </select>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email"
+                                       pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" required>
+                            </div>
+                            <div class="row50 row">
+                                <label for="phone">Phone:</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" maxlength="9" required>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="country">Country:</label>
+                                <input type="text" id="country" name="country" required maxlength="10">
+                            </div>
+                            <div class="row50 row">
+                                <label for="city">City:</label>
+                                <input type="text" id="city" name="city" maxlength="10">
+                            </div>
+                        </div>
+
+                        <label for="color">Choose color:</label>
+                        <input type="color" id="color" name="color"><br>
+
+
+                        <label for="gender">Sex:</label>
+                        <input type="radio" id="gender" name="gender" value="male" checked>
+                        <label>male</label>
+                        <input type="radio" name="gender" value="female">
+                        <label>female</label>
+
+                        <div class="row100 row">
+                            <label for="about">Notes(option):</label>
+                            <textarea name="note" id="note" rows="4" maxlength="150"
+                                      placeholder="I can interest students ..."></textarea>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <input class="button" value="Add" type="submit">
+                            </div>
+
+                            <div class="row50 row">
+                                <input type="button" class="button close" value="Cansel">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal" id="modal-info">
+
+    <div class="popup-menu popup-teacher-info">
+        <header class="flex popup">
+            <h2>
+                Teacher-info
+            </h2>
+            <i class="fa-solid fa-xmark close" style="font-size: 32px; cursor: pointer;"></i>
+        </header>
+
+        <div class="info" id="infoPopup">
+            <div class="infoImg">
+                <img alt="avatar" src="./images/default_avatar.png" class="avatar">
+            </div>
+            <div id="updateInfo" style="width: 50%; margin-left: 5px; position: relative;">
+                <h4> Igor Harlamov</h4> <i class='fa-solid fa-crown favorite'>
+
+            </i>
+                <p>19</p>
+                <p>Mathematics</p>
+                <p>Blacktorchone@gmail.com</p>
+                <p>+0969 837 826</p>
+                <p>Ukraine, Kyiv</p>
+            </div>
+        </div>
+        <div style="padding: 0 10px 20px;">
+            <p class="smallFont">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Eget nunc scelerisque viverra mauris
+                in aliquam sem fringilla. Nisl rhoncus mattis rhoncus urna neque. Neque convallis
+                a cras semper auctor neque vitae tempus quam. Donec pretium vulputate sapien nec
+                sagittis. Gravida neque convallis a cras.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="Contents" id="main-content">
+    <div class="Header Menu flex">
+        <div class="header-logo">
+            <a href="#" target="_self">
+                <h2>
+                    Teachinder
+                </h2>
+            </a>
+        </div>
+        <div class="Seacrh">
+            <form>
+                <input id="seacrh" type="search" autocomplete="off" name="search" placeholder="I want find ...">
+                <i class="fa-solid fa-magnifying-glass search-icon"
+                   style="font-size: 24px; border-right: 1px solid black; padding-right: 2px;"></i>
+                <input class="button width user-dont-select" type="submit" value="Seacrh">
+            </form>
+        </div>
+    </div>
+    <div class="Navigion Menu flex">
+        <ul>
+            <li><i class="fa-regular fa-user"></i><a href="#teachers">Teachers</a></li>
+            <li><i class="fa-solid fa-signal"></i><a href="#statistic">Statistic</a></li>
+            <li><i class="fa-solid fa-crown"></i><a href="#favorites">Favorites</a></li>
+            <li><i class="fa-regular fa-address-card"></i><a href="#about">About</a></li>
+        </ul>
+        <div class="button addteacher">
+            Add teacher
+        </div>
+
+    </div>
+    <div class="Top-teachers Menu" id="teachers">
+        <hr>
+        <h3>
+            Top Teachers
+        </h3>
+        <div class="filter-menu Menu">
+            <div class="filter-menu-buttons">
+                <label for="select-age">Age:</label>
+                <select id="select-age">
+                    <option value="18-31">
+                        18-31
+                    </option>
+                    <option value="31-52">
+                        31-52
+                    </option>
+                    <option value="52-68">
+                        52-68
+                    </option>
+                </select>
+            </div>
+            <div class="filter-menu-buttons">
+                <label for="select-region">Region:</label>
+                <select id="select-region">
+                    <option value="Europe">
+                        Europe
+                    </option>
+                    <option value="Asia">
+                        Asia
+                    </option>
+                    <option value="Australiz">
+                        Australiz
+                    </option>
+                    <option value="Northern America">
+                        Northern America
+                    </option>
+                    <option value="South America">
+                        South America
+                    </option>
+                </select>
+            </div>
+            <div class="filter-menu-buttons">
+                <label for="select-gender">Sex:</label>
+                <select id="select-gender">
+                    <option value="Mane">
+                        Mane
+                    </option>
+                    <option value="Female">
+                        Female
+                    </option>
+                </select>
+            </div>
+            <div class="filter-menu-buttons">
+                <input type="checkbox" id="check-photo">
+                <label for="check-photo">Only with photo</label>
+            </div>
+            <div class="filter-menu-buttons">
+                <input type="checkbox" id="check-favorites">
+                <label for="check-favorites">Only favorites</label>
+            </div>
+        </div>
+
+    </div>
+    <div class="Gallery-Teachers" id="gallery">
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/двекиси.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+        <div class="Teacher-card">
+            <i class='fa-solid fa-crown favorite'></i>
+            <div class='flip-card'>
+                <div class='front-card'>
+                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
+                    <p class='user-dont-select'>" value.full_name "</p>
+                    <p class='user-dont-select'>" value.specialty "</p>
+                    <p class='user-dont-select'>" value.address "</p>
+                </div>
+                <div class='back-card'>
+                    <p class='user-dont-select'>" value.email "</p>
+                    <p class='user-dont-select'> (380)value.phone "</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Statistics Menu" id="statistic">
+        <hr>
+        <h3>
+            Statistics
+        </h3>
+        <div class="update">
+
+            <table class="statis">
+                <thead>
+                <tr>
+                    <th class="col user-dont-select" data-order='desc' data-column="name">Name</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="specialty">Specialty</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="age">Age</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="gender">Gender</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="country">Country</th>
+                </tr>
+                </thead>
+                <tbody id="table-teacher">
+                <tr>
+                    <td>
+                        Igor Kharlamov
+                    </td>
+                    <td>
+                        Mathematics
+                    </td>
+                    <td>
+                        25
+                    </td>
+                    <td>
+                        mane
+                    </td>
+                    <td>
+                        Ukraine
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Igor Kharlamov
+                    </td>
+                    <td>
+                        Mathematics
+                    </td>
+                    <td>
+                        25
+                    </td>
+                    <td>
+                        mane
+                    </td>
+                    <td>
+                        Ukraine
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Igor Kharlamov
+                    </td>
+                    <td>
+                        Mathematics
+                    </td>
+                    <td>
+                        25
+                    </td>
+                    <td>
+                        mane
+                    </td>
+                    <td>
+                        Ukraine
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a class="active" href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+    </div>
+    <div class="Favorites Menu" id="favorites">
+        <hr>
+        <h3>
+            Favorites
+        </h3>
+        <div class="media-scroller" id="media">
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="/images/кошечка_прыгает.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="/images/кошечка_прыгает.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="images/двекиси.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="/images/кошечки.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="/images/кошечка_прыгает.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+            <div class="Teacher-card">
+                <a href="#popup">
+                    <img alt="avatar" src="/images/двекиси.jpg" class="avatar zoomHover">
+                </a>
+                <p class="user-dont-select">Anna Dold</p>
+                <p class="user-dont-select">diso</p>
+            </div>
+        </div>
+    </div>
+    <div class="Foouter Menu" id="about">
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Eget nunc scelerisque viverra mauris
+            in aliquam sem fringilla. Nisl rhoncus mattis rhoncus urna neque. Neque convallis
+            a cras semper auctor neque vitae tempus quam. Donec pretium vulputate sapien nec
+            sagittis. Gravida neque convallis a cras. Et molestie ac feugiat sed lectus vestibulum mattis
+            ullamcorper velit. Tortor pretium viverra suspendisse potenti. Malesuada nunc vel risus
+            commodo viverra maecenas. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut.
+            Tellus rutrum tellus pellentesque eu. Eu sem integer vitae justo eget magna fermentum iaculis eu.
+            Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque.
+        </p>
+    </div>
+    <div class="Navigion Menu flex" style="padding-bottom: 20px; margin: 0;">
+        <ul>
+            <li><i class="fa-regular fa-user"></i><a href="#teachers">Teachers</a></li>
+            <li><i class="fa-solid fa-signal"></i><a href="#statistic">Statistic</a></li>
+            <li><i class="fa-solid fa-crown"></i><a href="#favorites">Favorites</a></li>
+            <li><i class="fa-regular fa-address-card"></i><a href="#about">About</a></li>
+        </ul>
+        <div class="button addteacher">
+            Add teacher
+        </div>
+    </div>
+</div>
+</body>
 </html>

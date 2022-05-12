@@ -1,7 +1,11 @@
 {
-  "name": "lab_boilerplate",
+  "name": "teachinder",
+  "author": "Igor Harlamov <Blacktorchone@gmail.com> ",
+  "homepage": "https://harlamovgarik.github.io/teachinder/",
   "description": "",
+  "version": "1.0.0",
   "main": "./src/index.js",
+  "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --inline",
     "build": "rm -f build && cross-env NODE_ENV=production webpack --progress",
@@ -38,5 +42,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "autoprefixer": "^8.6.5"
+  }
 }
