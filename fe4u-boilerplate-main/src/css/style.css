@@ -18,9 +18,11 @@ a {
 }
 
 p, label, td {
-  font-size: min(12px, 3vw);
+  font-size: min(16px, 3vw);
 }
-
+p.smallFont{
+  font-size: min(14px, 3.5vw);
+}
 a, h3, th, input, div.button {
   font-size: min(18px, 3.5vw);
 }
@@ -132,7 +134,7 @@ div.container > div.selected {
 }
 
 div.popup-teacher-info {
-  max-width: max(500px, 45vmax);
+  max-width: max(400px, 40vmax);
   background-color: #ddd;
 }
 
@@ -202,14 +204,15 @@ main.nightmode {
 }
 
 div.info {
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 15px;
+  padding: 10px 10px 0;
 }
 
 div.infoImg {
   margin-bottom: 15px;
-  flex: 40%;
+  width: 45%;
 }
 
 div.infoText {

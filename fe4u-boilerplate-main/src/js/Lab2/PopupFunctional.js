@@ -11,6 +11,18 @@ window.onclick = function (event) {
         content.classList.toggle("background");
     }
 }
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && (modal_info.style.display === 'block' || add_teacher.style.display === 'block')) {
+        modal_info.style.display = "none";
+        modal.style.display = "none";
+        content.classList.toggle("background");
+    }
+});
+
+$("div.Teacher-card").on('click', function () {
+    modal_info.style.display = "block";
+    content.classList.toggle("background");
+})
 
 $(".toggle").on('click', function () {
     $("div.sidebar").toggleClass("selected");
