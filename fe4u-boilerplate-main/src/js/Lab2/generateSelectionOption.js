@@ -1,9 +1,38 @@
 /* eslint-disable */
-function generateOption(ageRange){
+
+const CourseEnum = [
+    'Mathematics',
+    'Physics',
+    'English',
+    'Computer Science',
+    'Dancing',
+    'Chess',
+    'Biology',
+    'Chemistry',
+    'Law',
+    'Art',
+    'Medicine',
+    'Statistics',
+];
+const MonthEnum = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
+
+function generateOption(ageRange) {
     let selectOptionMonth = document.getElementById("fmonth")
-    const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    for (let i = 0; i < MONTHS.length; i++) {
-        selectOptionMonth.append(new Option(MONTHS[i], i))
+    for (let i = 0; i < MonthEnum.length; i++) {
+        selectOptionMonth.append(new Option(MonthEnum[i], i));
     }
 
     let selectOptionYears = document.getElementById("fyear")
@@ -11,8 +40,17 @@ function generateOption(ageRange){
     let _maxYear = currentYear - 16;
     let _minYear = _maxYear - ageRange;
 
+    let selectOptionSpec = document.getElementById("specialty")
+    for (let i = 0; i < CourseEnum.length; i++) {
+        selectOptionSpec.append(new Option(CourseEnum[i], i));
+    }
     for (let i = _maxYear; i > _minYear; i--) {
         selectOptionYears.append(new Option(i, i));
     }
 }
-module.exports = generateOption;
+
+module.exports = {
+    generateOption,
+    CourseEnum,
+    MonthEnum,
+};
