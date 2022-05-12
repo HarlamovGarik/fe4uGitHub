@@ -14,6 +14,8 @@
     <meta name="author" content="Igor Kharlamov">
 
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/avatar-wrapper.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/88c44a0b03.js" crossorigin="anonymous"></script>
@@ -78,11 +80,6 @@
                         <div class="row100 row">
                             <label for="specialty"> Сhoose specialty: </label>
                             <select id="specialty" name="specialty">
-                                <option value="Mathmeamatics">Mathmematics</option>
-                                <option value="Physics">Physics</option>
-                                <option value="Biology">Biology</option>
-                                <option value="Chemistry">Chemistry
-                                </option>
                             </select>
                         </div>
                         <div class="flex">
@@ -106,16 +103,20 @@
                                 <input type="text" id="city" name="city" maxlength="10">
                             </div>
                         </div>
+                        <!--                        <label for="color">Choose color:</label>-->
+                        <!--                        <input type="color" id="color" name="color"><br>-->
+                        <div style="padding: 3px 2px;" class="flex">
+                            <label for="gender">Sex:</label>
+                            <div class="flex">
+                                <input type="radio" id="gender" name="gender" value="male" checked>
+                                <label>male</label>
+                            </div>
+                            <div class="flex">
+                                <input type="radio" name="gender" value="female">
+                                <label>female</label>
+                            </div>
+                        </div>
 
-                        <label for="color">Choose color:</label>
-                        <input type="color" id="color" name="color"><br>
-
-
-                        <label for="gender">Sex:</label>
-                        <input type="radio" id="gender" name="gender" value="male" checked>
-                        <label>male</label>
-                        <input type="radio" name="gender" value="female">
-                        <label>female</label>
 
                         <div class="row100 row">
                             <label for="about">Notes(option):</label>
@@ -267,111 +268,111 @@
 
     </div>
     <div class="Gallery-Teachers" id="gallery">
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/двекиси.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
-        <div class="Teacher-card">
-            <i class='fa-solid fa-crown favorite'></i>
-            <div class='flip-card'>
-                <div class='front-card'>
-                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>
-                    <p class='user-dont-select'>" value.full_name "</p>
-                    <p class='user-dont-select'>" value.specialty "</p>
-                    <p class='user-dont-select'>" value.address "</p>
-                </div>
-                <div class='back-card'>
-                    <p class='user-dont-select'>" value.email "</p>
-                    <p class='user-dont-select'> (380)value.phone "</p>
-                </div>
-            </div>
-        </div>
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/двекиси.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="Teacher-card">-->
+        <!--            <i class='fa-solid fa-crown favorite'></i>-->
+        <!--            <div class='flip-card'>-->
+        <!--                <div class='front-card'>-->
+        <!--                    <img alt='avatar' src='./images/кошечка_прыгает.jpg' class='avatar'>-->
+        <!--                    <p class='user-dont-select'>" value.full_name "</p>-->
+        <!--                    <p class='user-dont-select'>" value.specialty "</p>-->
+        <!--                    <p class='user-dont-select'>" value.address "</p>-->
+        <!--                </div>-->
+        <!--                <div class='back-card'>-->
+        <!--                    <p class='user-dont-select'>" value.email "</p>-->
+        <!--                    <p class='user-dont-select'> (380)value.phone "</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
     <div class="Statistics Menu" id="statistic">
         <hr>
@@ -381,7 +382,7 @@
         <div class="update">
 
             <table class="statis">
-                <thead>
+                <thead id="table-head">
                 <tr>
                     <th class="col user-dont-select" data-order='desc' data-column="name">Name</th>
                     <th class="col user-dont-select" data-order='desc' data-column="specialty">Specialty</th>
@@ -390,73 +391,75 @@
                     <th class="col user-dont-select" data-order='desc' data-column="country">Country</th>
                 </tr>
                 </thead>
-                <tbody id="table-teacher">
-                <tr>
-                    <td>
-                        Igor Kharlamov
-                    </td>
-                    <td>
-                        Mathematics
-                    </td>
-                    <td>
-                        25
-                    </td>
-                    <td>
-                        mane
-                    </td>
-                    <td>
-                        Ukraine
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Igor Kharlamov
-                    </td>
-                    <td>
-                        Mathematics
-                    </td>
-                    <td>
-                        25
-                    </td>
-                    <td>
-                        mane
-                    </td>
-                    <td>
-                        Ukraine
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Igor Kharlamov
-                    </td>
-                    <td>
-                        Mathematics
-                    </td>
-                    <td>
-                        25
-                    </td>
-                    <td>
-                        mane
-                    </td>
-                    <td>
-                        Ukraine
-                    </td>
-                </tr>
+                <tbody id="table-body">
+                <!--                <tr>-->
+                <!--                    <td>-->
+                <!--                        Igor Kharlamov-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Mathematics-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        25-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        mane-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Ukraine-->
+                <!--                    </td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td>-->
+                <!--                        Igor Kharlamov-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Mathematics-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        25-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        mane-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Ukraine-->
+                <!--                    </td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td>-->
+                <!--                        Igor Kharlamov-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Mathematics-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        25-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        mane-->
+                <!--                    </td>-->
+                <!--                    <td>-->
+                <!--                        Ukraine-->
+                <!--                    </td>-->
+                <!--                </tr>-->
 
                 </tbody>
-
+                <tfoot>
+                <div id="pagination" data-current="0">
+                    <!--                <a href="#">&laquo;</a>-->
+                    <!--                <a href="#">1</a>-->
+                    <!--                <a class="active" href="#">2</a>-->
+                    <!--                <a href="#">3</a>-->
+                    <!--                <a href="#">4</a>-->
+                    <!--                <a href="#">5</a>-->
+                    <!--                <a href="#">6</a>-->
+                    <!--                <a href="#">&raquo;</a>-->
+                </div>
+                </tfoot>
             </table>
 
-            <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a class="active" href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-            </div>
+
         </div>
     </div>
     <div class="Favorites Menu" id="favorites">
