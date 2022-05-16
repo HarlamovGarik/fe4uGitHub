@@ -29,7 +29,6 @@ class teachersTableList {
             th.dataset.order = 'desc';
             teachers = teachers.sort((a, b) => a[column] < b[column] ? 1 : -1);
         }
-        console.log(teachers, order, column);
         return teachers;
     }
 
@@ -50,22 +49,6 @@ class teachersTableList {
         return tr;
     }
 
-    static createPaginationPage(pageNumber, isCurrent = false) {
-        const page = document.createElement('a');
-        page.classList.add('pagination-link');
-        isCurrent && page.classList.add('pagination-active');
-        page.dataset.value = pageNumber;
-        page.innerText = pageNumber;
-        return page;
-    }
-
-    static createPaginationPoints() {
-        const points = document.createElement('a');
-        points.classList.add('pagination-points');
-        points.innerText = '...';
-        return points;
-    }
-
     constructor() {
         this.teachers = [];
         this.page = {
@@ -76,9 +59,10 @@ class teachersTableList {
             current: 1,
             remainder: 0,
         };
-        this.tbody = document.getElementById('table-body');
+        this.tbody = document.getElementById('table-statistic-body');
         this.thead = document.getElementsByClassName('col');
         this.pagination = document.getElementById('pagination');
+
         const clearSorted = () => {
             [...this.thead].forEach((th) => {
                 th.classList.remove('sorted');
@@ -92,8 +76,6 @@ class teachersTableList {
             };
         });
         this.table = document.getElementById('statistic');
-        console.log(this.pagination);
-        // this.thead.appendChild(this.Header(this.teachers));
     }
 
     setupPage(number) {
@@ -106,7 +88,7 @@ class teachersTableList {
             const teacherSetupElm = teachersTableList.createHTML_tr(data);
             this.tbody.appendChild(teacherSetupElm);
         });
-        this.updatePagination(number);
+        // this.updatePagination(number);
     }
 
     onClickPage(number) {
@@ -119,58 +101,6 @@ class teachersTableList {
         this.page.current = number;
         page.classList.add('pagination_current');
         this.setupPage(number);
-    }
-
-    updatePagination(pageCurrent) {
-        while (this.pagination.firstChild) {
-            this.pagination.firstChild.remove();
-        }
-        const addPage = (number, isCurrent = false) => {
-            const page = teachersTableList.createPaginationPage(number, isCurrent);
-            page.onclick = () => this.onClickPage(number);
-            this.pagination.appendChild(page);
-        };
-
-        const addPoints = () => {
-            const points = teachersTableList.createPaginationPoints();
-            this.pagination.appendChild(points);
-        };
-        // ~~~
-        let isPointsStart = false;
-        let isPointsLast = false;
-        const length = this.page.end;
-        // ~~~
-        if (length >= 3) {
-            addPage(1);
-        }
-        if (pageCurrent > 3 && !isPointsStart) {
-            addPoints();
-            isPointsStart = true;
-        }
-
-        if (pageCurrent - 1 > 1) {
-            addPage(pageCurrent - 1);
-        }
-
-        if (pageCurrent !== 1 && pageCurrent !== length) {
-            addPage(pageCurrent);
-        }
-
-        if (pageCurrent + 1 < length) {
-            addPage(pageCurrent + 1);
-        }
-
-        if (pageCurrent + 2 < length && !isPointsLast) {
-            addPoints();
-            isPointsLast = true;
-        }
-        if (length >= 3) {
-            addPage(length);
-        }
-        // ~~~
-        this.pagination.dataset.current = pageCurrent;
-        const page = this.pagination.querySelector(`.pagination-link[data-value="${pageCurrent}"]`);
-        page.classList.add('pagination-active');
     }
 
     updateTable() {
@@ -191,8 +121,6 @@ class teachersTableList {
         this.teachers = this.SortTeacher(th, teacher);
         this.updateTable();
     }
-
-
 }
 
 module.exports = teachersTableList;

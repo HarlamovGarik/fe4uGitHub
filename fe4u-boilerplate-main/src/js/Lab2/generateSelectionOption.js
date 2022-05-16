@@ -41,9 +41,10 @@ function generateOption(ageRange) {
     let _minYear = _maxYear - ageRange;
 
     let selectOptionSpec = document.getElementById("specialty")
-    for (let i = 0; i < CourseEnum.length; i++) {
-        selectOptionSpec.append(new Option(CourseEnum[i], i));
-    }
+    CourseEnum.forEach(course => {
+        selectOptionSpec.append(new Option(course, course));
+    });
+
     for (let i = _maxYear; i > _minYear; i--) {
         selectOptionYears.append(new Option(i, i));
     }

@@ -10,7 +10,7 @@ class teacherApi {
         this.seed = seed;
     }
 
-    getPath(options = "") {
+    getPath({options}) {
         return API_RANDOM_USER_URL + API.toStringOptions(options);
     }
 
@@ -23,14 +23,15 @@ class teacherApi {
         console.log(this.getPath({options}));
         return await RandomUsers.get(options);
     }
-    async getLimitedResult({page, limit}) {
+    async getLimitedResult({page, limit=10}) {
+
         const options = {
             page,
             seed: this.seed,
-            results: limit
+            results: limit,
         };
         console.log(this.getPath({options}));
-        return await RandomUsers.get({options});
+        return await RandomUsers.get(options);
     }
     async getFilterResult({page, limit, filterOptions = {}}){
         const  options = {

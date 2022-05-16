@@ -10,13 +10,32 @@ function anyCompare(elm1, elm2) {
     return (elm1 > elm2) ? 1 : ((elm2 > elm1) ? -1 : 0);
 }
 
+// function SearchUser(users, opts) {
+//     const fields = [];
+//     console.log(users);
+//     users.forEach((user) => {
+//         Object.keys(opts).forEach(key => {
+//             if (opts[key] !== "" && key === 'firstname') {
+//                 console.log(user[key].slice(0,opts[key].length));
+//                 if (user[key].slice(0,opts[key].length).toLowerCase() === opts[key].toLowerCase()) fields.push(user);
+//             }else if(key !== 'age'){
+//                 if (user[key].toLowerCase() === opts[key])
+//                     fields.push(user);
+//             }else if (user[key] == opts[key]) fields.push(user);
+//
+//         });
+//     });
+//     console.log(fields);
+//     return fields;
+// }
+
 const checkForCompliance = (user, opts) => {
     const keys = Object.keys(opts);
-    return keys.length > 0 && keys.every((key) => opts[key] === user[key]);
+    return keys.every((key) => opts[key] == user[key]);
 };
 
 function SearchUser(users, opts) {
-    return users.find((user) => checkForCompliance(user, opts)) || null;
+    return users.filter((user) => checkForCompliance(user, opts)) || null;
 }
 
 module.exports =

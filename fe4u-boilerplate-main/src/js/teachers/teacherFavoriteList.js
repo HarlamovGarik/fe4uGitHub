@@ -1,18 +1,26 @@
 /* eslint-disable */
-function createFavoriteCard(user) {
-    let favoriteCard = document.createElement("div");
-    favoriteCard.id = String("favCard" + user.id);
-    favoriteCard.classList.add("Teacher-card");
-    favoriteCard.addEventListener('click', UpdateFavPopup);
-    favoriteCard.innerHTML = "<a href='#popup'><img alt='avatar' src='+user.picture_large+'class='avatar zoomHove'></a>" +
-        "<h4 class='user-dont-select'>" + user.full_name + "</h4>" +
-        "<p class='user-dont-select'>" + user.specialty + "</p>" +
-        "<p class='user-dont-select'>" + user.address + "</p>";
+class teacherFavoriteList {
+    constructor() {
+        this.FavList = document.getElementById('media');
+        this.list = {};
+        this.count = 0;
+    }
 
-    let media = document.getElementById("media");
-    media.appendChild(favoriteCard);
+    add(teacherCard) {
+        const teacherId = teacherCard.dataset.id;
+        this.list[teacherId] = {};
+        this.FavList.appendChild(teacherCard);
+        this.list[teacherId].element = teacherCard;
+        this.count++;
+    }
+
+    remove(teacherId) {
+        const teacher = this.list[teacherId];
+        if (!teacher) return;
+        this.FavList.removeChild(teacher.element);
+        delete this.list[teacherId];
+        this.count--;
+    }
 }
 
-module.exports = {
-    createFavoriteCard,
-}
+module.exports = teacherFavoriteList;

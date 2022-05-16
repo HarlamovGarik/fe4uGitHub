@@ -1,29 +1,39 @@
 /* eslint-disable */
-let modal = document.getElementById("modal-menu");
-let content = document.getElementById("main-content");
-let modal_info = document.getElementById("modal-info");
-let add_teacher = document.getElementById("popupaddteacher");
+const formAddTeacher = document.getElementById("modal-menu");
+const content = document.getElementById("main-content");
+const popupModalInfo = document.getElementById("modal-info");
+const popupAddTeacher = document.getElementById("popup-add-teacher");
 
 window.onclick = function (event) {
-    if (event.target === modal || event.target === modal_info) {
-        modal_info.style.display = "none";
-        modal.style.display = "none";
-        content.classList.toggle("background");
+    if (event.target === formAddTeacher || event.target === popupModalInfo) {
+       close();
     }
 }
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && (popupModalInfo.style.display === "block" || formAddTeacher.style.display === "block")) {
+       close();
+    }
+});
 
 $(".toggle").on('click', function () {
     $("div.sidebar").toggleClass("selected");
-    add_teacher.classList.toggle("selected");
+    popupAddTeacher.classList.toggle("selected");
 });
 
-$("div.addteacher").on('click', function () {
-    modal.style.display = "block";
+$("div.add-teacher").on('click', function () {
+    formAddTeacher.style.display = "block";
     content.classList.toggle("background");
 });
 
 $(".close").on('click', function () {
-    modal.style.display = "none";
-    modal_info.style.display = "none";
-    content.classList.toggle("background");
+    close();
 });
+function close(){
+    formAddTeacher.style.display = "none";
+    popupModalInfo.style.display = "none";
+    content.classList.toggle("background");
+}
+module.exports = {
+    content,
+    popupModalInfo,
+}
