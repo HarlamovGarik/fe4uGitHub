@@ -42,7 +42,7 @@ function createUser(user, index, form = false) {
         firstname: firstname,
         lastname: lastname,
         // state: get('state') || get('location', 'state'),
-        country: get('location', 'country') || get('country' || ""),
+        country: get('location', 'country') || get('country') || null,
         city: get('location', 'city') || get('city') || "",
         // location: get('location') || location,
         postcode: get('postcode') || get('location', 'postcode') || null,
@@ -62,24 +62,26 @@ function createUser(user, index, form = false) {
         note: get("note") || null,
     }
 }
+function generateOptions(list){
+    const optionsRegion = document.getElementById("select-region");
+    for (let obj of list) {
+        optionsRegion.append(new Option(obj, obj));
+    }
+}
+const uniqueOption = (list) => {
+    const result = [];
+    for (let obj of list) {
+        if (!result.includes(obj.country)) {
+            result.push(obj.country);
+        }
+    }
+    return result;
+}
 
 function userFormatting(user_random_mock) {
     let list = user_random_mock.map(createUser);
+    generateOptions(uniqueOption(list));
 
-    const uniqueOption = (list) => {
-        const result = []
-        const optionsRegion = document.getElementById("select-region");
-
-        for (let obj of list) {
-            if (!result.includes(obj.country)) {
-                result.push(obj.country);
-                optionsRegion.append(new Option(obj.country, obj.country));
-
-            }
-        }
-    }
-
-    uniqueOption(list)
     return list;
 }
 
@@ -87,4 +89,5 @@ function userFormatting(user_random_mock) {
 module.exports = {
     userFormatting,
     createUser,
+    uniqueOption,
 }

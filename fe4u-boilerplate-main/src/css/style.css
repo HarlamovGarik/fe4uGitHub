@@ -18,16 +18,17 @@ a {
 }
 
 input,
-textarea
-{
+textarea {
   border: 1px solid black;
   border-radius: 3px;
 
 }
-select{
+
+select {
   border: 1px solid black;
-  border-radius: 3px 3px 0 0 ;
+  border-radius: 3px 3px 0 0;
 }
+
 input:active, input:hover, input:focus {
   outline: 0;
   outline-offset: 0;
@@ -41,12 +42,24 @@ hr {
   margin: 15px 2vh;
 }
 
+.canvas-content {
+  display: flex;
+  max-width: 300px;
+  align-content: center;
+}
+
+.canvas-list {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+}
+
 /*-------------------------FONT-SIZE-----------------------*/
-a, p, label, td, .button {
+a, p, label, td, .button, input, select {
   font-size: min(12px, 3vw);
 }
 
-h3, th, input, summary {
+h3, th, summary {
   font-size: min(18px, 3.5vw);
 }
 
@@ -215,7 +228,10 @@ div.popup-teacher-info {
 /*  flex-wrap: nowrap;*/
 /*  grid-area: more;*/
 /*}*/
-#map { height: 180px; }
+#map {
+  height: 180px;
+}
+
 iframe.iframeMap {
   width: max(300px, 32vmax);
 }
@@ -503,6 +519,7 @@ div.search-form {
   margin-left: 10px;
   position: relative;
   padding: 10px 0;
+
 }
 
 i.search-icon {
@@ -543,6 +560,7 @@ ul {
   text-align: left;
   padding: 0 0 0 10px;
   color: inherit;
+
 }
 
 li {
@@ -564,9 +582,10 @@ li a {
 }
 
 .filter-menu {
-  justify-content: start;
   display: flex;
   margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .filter-menu div.filter-menu-buttons {
@@ -665,6 +684,12 @@ div.pagination {
   div.contents {
     max-width: 100%;
   }
+  div.canvas-list{
+    display: grid;
+    grid-template-columns: none;
+    justify-content: center;
+    justify-items: center;
+  }
 }
 
 /*-------------------------MEDIA 520px-----------------------*/
@@ -692,4 +717,5 @@ div.pagination {
   div.contents {
     max-width: 100%;
   }
+
 }

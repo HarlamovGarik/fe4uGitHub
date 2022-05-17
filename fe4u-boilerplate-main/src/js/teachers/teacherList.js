@@ -6,6 +6,7 @@ const PopupTeacherCard = require('../Popup/popupTeacherCard');
 
 const Process = require('../processRawDate');
 const {SearchUser} = require('../RawDate/userOperate');
+
 const popupTeacherCard = new PopupTeacherCard();
 
 class TeacherList {
@@ -23,21 +24,26 @@ class TeacherList {
             "<p class='user-dont-select'>" + teacher.phone + "</p>" +
             "</div> " +
             "</div>";
+        if (teacher.favorite)
+            teacherCard.getElementsByTagName("i")[0].classList.add("selected");
     }
 
     static fieldFavHTML(favTeacherCard, teacher) {
-        favTeacherCard.innerHTML = "<img alt='avatar' src=" + teacher.picture_large + " class='avatar'>" +
+        favTeacherCard.innerHTML = "<i class='fa-solid fa-crown favorite'></i><img alt='avatar' src=" + teacher.picture_large + " class='avatar'>" +
             "<p class='user-dont-select'>" + teacher.full_name + "</p>" +
             "<p class='user-dont-select'>" + teacher.specialty + "</p>" +
             "<p class='user-dont-select'>" + teacher.location + "</p>";
+        if (teacher.favorite)
+            favTeacherCard.getElementsByTagName("i")[0].classList.add("selected");
     }
 
-    static createTeacherCard(teacher, fav=false) {
+    static createTeacherCard(teacher, fav = false) {
         const className = `teacher-card ${teacher.favorite ? 'favorite' : ''}`;
         const teacherCard = document.createElement("div");
         teacherCard.className = className.trim();
         teacherCard.dataset.id = teacher.id;
         teacherCard.id = teacher.id;
+
         if (!fav) {
             TeacherList.fieldHTML(teacherCard, teacher);
         } else TeacherList.fieldFavHTML(teacherCard, teacher);
@@ -54,11 +60,13 @@ class TeacherList {
         this.teachers = Process.userFormatting(teachers);
         console.log(this.teachers);
         this.teacherGallery = document.getElementById("gallery");
-        this.loadMoreBtn = document.getElementById("loadMore");
+
         this.teacherTableList = new TeacherTableList();
         this.teacherFavList = new FavoriteTeacherCard();
 
-
+        this.loadMoreBtn = document.getElementById("loadMore");
+        this.resetBtn = document.getElementById("resetBtn");
+        this.resetBtn.onclick = () => this.resetFilterElements();
         this.teacherList = null;
         this.teacherlistFiltered = [];
     };
@@ -112,14 +120,12 @@ class TeacherList {
             this.teacherTableList.add(teacher);
             if (teacher.favorite) {
                 const teacherLiElm = this.createFavTeacherCard(teacher);
-                // this.teacherFavoriteList.add(teacherLiElm);
-                // this.teacherFavoriteList.updateListElements();
+                this.teacherFavList.add(teacherLiElm);
             }
         });
         this.teacherTableList.updateTable();
     }
 
-    // add new data (load more)
     add(teacherDate) {
         const teacher = Process.createUser(teacherDate, this.teachers.length + 1, true);
         const teacherCard = TeacherList.createTeacherCard(teacher);
@@ -164,8 +170,25 @@ class TeacherList {
             this.teacherlistFiltered = this.createTeacherList(teachersSearched);
             this.teacherGallery.innerHTML = ""
             this.teacherGallery.appendChild(this.teacherlistFiltered);
-
         }
+    }
+
+    setDataForChart() {
+        const TitleValue = Process.uniqueOption(this.teachers);
+        const Value = {};
+        const value = [];
+        TitleValue.forEach(titleEl =>{
+            Value[titleEl] = 0;
+        });
+        this.teachers.forEach(el => {
+            TitleValue.forEach(titleEl =>{
+               if(el.country === titleEl) Value[titleEl]++;
+            });
+        });
+        Object.keys(Value).forEach(key => {
+            value.push(Value[key]);
+        });
+        return {title: TitleValue, value: value};
     }
 
     resetFilterElements() {
@@ -180,4 +203,5 @@ class TeacherList {
     }
 }
 
-module.exports = TeacherList;
+module
+    .exports = TeacherList;

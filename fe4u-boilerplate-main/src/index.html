@@ -219,54 +219,47 @@
             Top Teachers
         </h3>
         <div id="filterForm">
-            <form class="filter-menu menu" name="filterForm">
-                <div class="filter-menu-buttons">
-                    <label for="select-age">Age:
-                        <select id="select-age" name="age">
-                            <option value="not_specify" selected>
-                            </option>
-                            <option value="18-31">
-                                18-31
-                            </option>
-                            <option value="31-52">
-                                31-52
-                            </option>
-                            <option value="52-68">
-                                52-68
-                            </option>
-                        </select>
-                    </label>
+            <form class="filter-menu" name="filterForm">
+                <div class="filter-left-block">
+                <ul>
+                    <li><div class="filter-menu-buttons">
+                        <label for="select-age">Age:
+                            <input id="select-age" type="number" name="age" max="70" min="18">
+                        </label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons" id="filter-region">
+                        <label for="select-gender">Region:
+                            <select id="select-region" name="country">
+                                <option value="not_specify" selected>
+                                </option>
+                            </select>
+                        </label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons">
+                        <label for="select-gender">Sex:
+                            <select id="select-gender" name="gender">
+                                <option value="not_specify" selected>
+                                </option>
+                                <option value="male">
+                                    Male
+                                </option>
+                                <option value="female">
+                                    Female
+                                </option>
+                            </select>
+                        </label>
+                    </div></li>
+                    <li><div class="filter-menu-buttons">
+                        <input type="checkbox" id="check-photo" name="isPhoto">
+                        <label for="check-photo">Only with photo</label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons">
+                        <input type="checkbox" id="check-favorites" name="favorite">
+                        <label for="check-favorites">Only favorites</label>
+                    </div></li>
+                </ul>
                 </div>
-                <div class="filter-menu-buttons" id="filter-region">
-                    <label for="select-gender">Sex:
-                        <select id="select-region" name="country">
-                            <option value="not_specify" selected>
-                            </option>
-                        </select>
-                    </label>
-                </div>
-                <div class="filter-menu-buttons">
-                    <label for="select-gender">Sex:
-                        <select id="select-gender" name="gender">
-                            <option value="not_specify" selected>
-                            </option>
-                            <option value="male">
-                                Male
-                            </option>
-                            <option value="female">
-                                Female
-                            </option>
-                        </select>
-                    </label>
-                </div>
-                <div class="filter-menu-buttons">
-                    <input type="checkbox" id="check-photo" name="isPhoto">
-                    <label for="check-photo">Only with photo</label>
-                </div>
-                <div class="filter-menu-buttons">
-                    <input type="checkbox" id="check-favorites" name="favorite">
-                    <label for="check-favorites">Only favorites</label>
-                </div>
+                <div class="filter-right-block"><input type="reset" id="resetBtn" class="button redColor" value="reset"></div>
             </form>
         </div>
 
@@ -308,6 +301,16 @@
                 </div>
                 </tfoot>
             </table>
+        </div>
+        <div class="circle-statistics menu" style="padding-top: 20px;">
+            <h3 class="user-dont-select"> Statistic Country teachers</h3>
+            <hr>
+            <div class="menu canvas-list">
+                <div class="canvas-content">
+                    <canvas id="Country-users" class="chart" ></canvas>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="favorites menu" id="favorites">

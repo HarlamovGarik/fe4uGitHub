@@ -90,9 +90,7 @@ class popupTeacherCard {
                     this.mapPopup.innerHTML = '<div id="map"></div>';
                     this.initMap(teacherData);
                     isClicked = true;
-                    this.closebtn.onclick = () => {
-                        document.getElementById('map-btn').remove();
-                    };
+
                 }
             }
         }

@@ -8,7 +8,7 @@ class teachersTableList {
             id: teacher.id,
             full_name: teacher.full_name,
             specialty: teacher.specialty || '',
-            location: teacher.location || '',
+            location: !!teacher.city ? teacher.country + "," + teacher.city : teacher.country || '',
             gender: teacher.gender ? (teacher.gender === 'M' ? 'Male' : 'Female') : '',
             age: teacher.age || 0,
         };

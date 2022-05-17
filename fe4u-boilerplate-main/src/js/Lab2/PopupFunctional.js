@@ -3,7 +3,7 @@ const formAddTeacher = document.getElementById("modal-menu");
 const content = document.getElementById("main-content");
 const popupModalInfo = document.getElementById("modal-info");
 const popupAddTeacher = document.getElementById("popup-add-teacher");
-
+const mapPopup = document.getElementById('map-content');
 window.onclick = function (event) {
     if (event.target === formAddTeacher || event.target === popupModalInfo) {
        close();
@@ -29,6 +29,7 @@ $(".close").on('click', function () {
     close();
 });
 function close(){
+    mapPopup.innerHTML = "";
     formAddTeacher.style.display = "none";
     popupModalInfo.style.display = "none";
     content.classList.toggle("background");

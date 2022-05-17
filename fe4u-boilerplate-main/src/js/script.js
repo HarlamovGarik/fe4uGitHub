@@ -24,13 +24,16 @@ import leaflet from 'leaflet';
     const db = new DataBase();
 
     const teacherApi = new TeacherAPI({seed: 'HELLTeachinder'});
-    const randomTeachers = await teacherApi.getStartPage({results: 20});
+    const randomTeachers = await teacherApi.getStartPage({results: 50});
     const teacherList = new TeachersList('teacherList', [...randomTeachers]);
     const popupAddTeacher = new PopupAddTeacher();
     const searchTeachers = new SearchTeachers();
 
     const filterTeachers = new FilterTeachers();
 
+
+    let titleChart = [];
+    let valueChart = [];
     console.log(randomTeachers);
 
 
@@ -56,18 +59,20 @@ import leaflet from 'leaflet';
 
     function createTeacher(teacherData) {
         teacherList.add(teacherData);
-        console.log(teacherData);
         db.post(JSON.stringify(teacherData));
     }
 
     function createFilterOpts(rawData) {
         const opts = {};
-        Object.keys(rawData).forEach(key =>{
-            if(!(rawData[key] === false || rawData[key] === 'not_specify')){
-                opts[key] =  rawData[key];
+        Object.keys(rawData).forEach(key => {
+            if (!(rawData[key] === false || rawData[key] === 'not_specify' || rawData[key] === "")) {
+                opts[key] = rawData[key];
+                if (key === "age") {
+                    opts[key] = parseInt(rawData[key]);
+                }
             }
         });
-        console.log(opts);
+        console.log(opts, rawData);
         return opts;
     }
 
@@ -93,7 +98,7 @@ import leaflet from 'leaflet';
             } else if (data.length > 15) opts['note'] = data
         });
         Object.keys(opts).forEach(key => {
-            if (opts[key] === "") delete opts[key];
+            if (opts[key] === "" || opts[key] === false) delete opts[key];
         });
         console.log(opts);
         return opts;
@@ -104,7 +109,7 @@ import leaflet from 'leaflet';
 
 
     let countTeacher = randomTeachers.length;
-    const MAX_TEACHER = 40;
+    const MAX_TEACHER = 100;
 
     teacherList.activeMore(() => {
         const limit = 10;
@@ -115,6 +120,8 @@ import leaflet from 'leaflet';
             .then(() => teacherApi.getLimitedResult({page, limit}))
             .then((teachers) => {
                 console.log(teachers);
+                titleChart = teacherList.setDataForChart().title;
+                valueChart = teacherList.setDataForChart().value;
                 if (countTeacher > MAX_TEACHER) {
                     return Promise.resolve({ok: false});
                 } else teacherList.addTeachers(teachers);
@@ -124,7 +131,42 @@ import leaflet from 'leaflet';
                 console.error('Error: ', error);
             });
     })
+    titleChart = teacherList.setDataForChart().title;
+    valueChart = teacherList.setDataForChart().value;
+    console.log(teacherList.setDataForChart());
 
+    let barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145",
+        "#dfe362",
+        "#9741f3",
+        "#3f8c61",
+        "#091c3a",
+        "#3a8383",
+        "#931d92",
+        "#ec8e2c",
+        "#c9d3e5",
+    ];
+
+    new Chart("Country-users", {
+        type: "doughnut",
+        data: {
+            labels: titleChart,
+            datasets: [{
+                backgroundColor: barColors,
+                data: valueChart
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "World Wide Wine Production 2018"
+            }
+        }
+    });
     console.log(hello);
 
 })();
