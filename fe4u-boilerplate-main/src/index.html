@@ -1,20 +1,375 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="eng">
 
-   <head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-tap-highlight" content="no">
 
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="msapplication-tap-highlight" content="no">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teachinder</title>
 
-      <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="уникальный сайт учителей с разных стран мира">
+    <meta name="keywords" content="Teacher,Site,TopTeacher,Teachinder,learn,web course">
+    <meta name="author" content="Igor Kharlamov">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+          crossorigin=""/>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/avatar-wrapper.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/88c44a0b03.js" crossorigin="anonymous"></script>
+</head>
 
-      <link rel="stylesheet" href="./css/app.css">
+<body>
+<div class="modal" id="modal-menu">
+    <div class="popup-menu popup-add-teacher" id="popup-add-teacher">
+        <header class="flex popup">
+            <h2>
+                Add teachers
+            </h2>
+            <div class="icon-content">
+                <i class="fa-solid fa-arrow-right-arrow-left ibutton toggle"
+                   id="swap"></i>
+                <i class="fa-solid fa-xmark close ibutton"></i>
+            </div>
 
-   </head>
+        </header>
+        <div class="container">
+            <div class="right-bar sidebar">
+                <div class="avatar-wrapper">
+                    <img class="profile-pic" src="">
+                    <div class="upload-button">
+                        <i class="fa fa-arrow-circle-up ibutton" aria-hidden="true"></i>
+                    </div>
+                    <input class="file-upload" type="file" accept="image/*" style="display: none;"/>
+                </div>
+            </div>
+            <div class="left-bar sidebar">
+                <div class="user-input">
+                    <form id="addTeacher" name="addTeacher">
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="name">First name:
+                                    <input type="text" id="name" name="name" required maxlength="8"
+                                           pattern="^[\w'\-,.А-Я][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:\s[\]]{2,}$">
+                                </label>
+                            </div>
 
-   <body>
+                            <div class="row50 row">
+                                <label for="lastname">Second name:
+                                    <input type="text" id="lastname" name="lastname" required maxlength="10"
+                                           pattern="^[\w'\-,.А-Я][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:\s[\]]{2,}$">
+                                </label>
+                            </div>
+                        </div>
 
-  </body>
+                        <div class="flex">
+                            <div class="row fday">
+                                <label for="fday">Day:
+                                    <input type="number" maxlength="2" max="30" min="0" pattern="[0-9]{2}" id="fday"
+                                           name="fday" required>
+                                </label>
+                            </div>
+                            <div class="row fmonth">
+                                <label for="fmonth">Month:
+                                    <select id="fmonth" name="fmonth">
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="row fyear">
+                                <label for="fyear">Year:
+                                    <select id="fyear" name="fyear">
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row100 row">
+                            <label for="specialty"> Pick specialty:
+                                <select id="specialty" name="specialty">
+                                </select>
+                            </label>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="email">Email:
+                                    <input type="email" id="email" name="email"
+                                           pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" required>
+                                </label>
+                            </div>
+                            <div class="row50 row">
+                                <label for="phone">Phone:
+                                    <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" maxlength="9" required>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <label for="country">Country:
+                                    <input type="text" id="country" name="country" required maxlength="10"
+                                           pattern="^[\w'\-,.А-Я][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$">
+                                </label>
+                            </div>
+                            <div class="row50 row">
+                                <label for="city">City:
+                                    <input type="text" id="city" name="city" maxlength="10"
+                                           pattern="^[\w'\-,.А-Я][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex genderOptions">
+                            <label>Sex:</label>
+                            <div>
+                                <label for="maleGender" class="flex">
+                                    <input type="radio" id="maleGender" name="gender" value="male" checked>
+                                    male</label>
+                            </div>
+                            <div>
+                                <label for="femaleGender" class="flex">
+                                    <input type="radio" id="femaleGender" name="gender" value="female">
+                                    female</label>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row100 row">
+                            <label for="note">Notes(option):</label>
+                            <textarea name="note" id="note" rows="4" maxlength="150"
+                                      placeholder="I can interest students ..."></textarea>
+                        </div>
+                        <div class="flex">
+                            <div class="row50 row">
+                                <input class="button" value="Add" type="submit" id="submitAddTeacher">
+                            </div>
+
+                            <div class="row50 row">
+                                <input type="button" class="button close" value="Cansel">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal" id="modal-info">
+
+    <div class="popup-menu popup-teacher-info">
+        <header class="flex popup">
+            <h2 id="headerPopup">
+            </h2>
+            <div class="icon-content">
+                <i class="fa-solid fa-crown" id="ifavorite"></i>
+                <i class="fa-solid fa-xmark close ibutton" id="close-popup"></i>
+            </div>
+        </header>
+
+        <div class="modal-info-teacher">
+            <div id="infoPopup">
+
+            </div>
+            <div class="toggleMap">
+                <div>
+                    <button class="button" id="map-btn">Toggle map</button>
+                </div>
+                <div id="map-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contents" id="main-content">
+    <div class="header menu flex">
+        <div class="header-logo">
+            <a href="#" target="_self" class="logo">
+                <h2>
+                    Teachinder
+                </h2>
+            </a>
+        </div>
+        <div class="search-form">
+            <form class="flex" name="searchTeachers" id="searchForm">
+                <input id="search" autocomplete="off" name="search" placeholder="I want to find ..."
+                       title="I can look by: Name, age favorite, gender!">
+                <i class="fa-solid fa-magnifying-glass search-icon ibutton"></i>
+                <input class="button redColor user-dont-select" id="search-button" type="submit" value="search"
+                       name="search-button">
+            </form>
+        </div>
+    </div>
+    <div class="navigation-top menu flex">
+        <ul>
+            <li><i class="fa-regular fa-user li"></i><a href="#teachers">Teachers</a></li>
+            <li><i class="fa-solid fa-signal li"></i><a href="#statistic">Statistic</a></li>
+            <li><i class="fa-solid fa-crown li"></i><a href="#favorites">Favorites</a></li>
+            <li><i class="fa-regular fa-address-card li"></i><a href="#about">About</a></li>
+        </ul>
+        <div class="button redColor add-teacher">
+            Add teacher
+        </div>
+
+    </div>
+    <div class="top-teachers menu" id="teachers">
+        <hr>
+        <h3>
+            Top Teachers
+        </h3>
+        <div id="filterForm">
+            <form class="filter-menu" name="filterForm">
+                <div class="filter-left-block">
+                <ul>
+                    <li><div class="filter-menu-buttons">
+                        <label for="select-age">Age:
+                            <input id="select-age" type="number" name="age" max="70" min="18">
+                        </label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons" id="filter-region">
+                        <label for="select-gender">Region:
+                            <select id="select-region" name="country">
+                                <option value="not_specify" selected>
+                                </option>
+                            </select>
+                        </label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons">
+                        <label for="select-gender">Sex:
+                            <select id="select-gender" name="gender">
+                                <option value="not_specify" selected>
+                                </option>
+                                <option value="male">
+                                    Male
+                                </option>
+                                <option value="female">
+                                    Female
+                                </option>
+                            </select>
+                        </label>
+                    </div></li>
+                    <li><div class="filter-menu-buttons">
+                        <input type="checkbox" id="check-photo" name="isPhoto">
+                        <label for="check-photo">Only with photo</label>
+                    </div></li>
+                    <li> <div class="filter-menu-buttons">
+                        <input type="checkbox" id="check-favorites" name="favorite">
+                        <label for="check-favorites">Only favorites</label>
+                    </div></li>
+                </ul>
+                </div>
+                <div class="filter-right-block"><input type="reset" id="resetBtn" class="button redColor" value="reset"></div>
+            </form>
+        </div>
+
+    </div>
+    <div class="update menu" id="gallery">
+
+    </div>
+    <div class="menu flex-button">
+        <button class="loadMorebtn button redColor" id="loadMore">
+            Load More
+        </button>
+    </div>
+    <div class="statistic-table menu" id="statistic">
+        <hr>
+        <h3>
+            Statistics
+        </h3>
+        <div class="table-paginator">
+            <table class="statistic-teachers">
+                <thead id="table-statistic-head">
+                <tr>
+                    <th class="col user-dont-select" data-order='desc' data-column="name" title="Sort By name">Name</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="specialty"
+                        title="Sort By specialty">Specialty
+                    </th>
+                    <th class="col user-dont-select" data-order='desc' data-column="age" title="Sort By age">Age</th>
+                    <th class="col user-dont-select" data-order='desc' data-column="gender" title="Sort By gender">
+                        Gender
+                    </th>
+                    <th class="col user-dont-select" data-order='desc' data-column="country" title="Sort By country">
+                        Country
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="table-statistic-body">
+                </tbody>
+                <tfoot>
+                <div id="pagination" data-current="0">
+                </div>
+                </tfoot>
+            </table>
+        </div>
+        <div class="circle-statistics menu" style="padding-top: 20px;">
+            <h3 class="user-dont-select"> Statistic Country teachers</h3>
+            <hr>
+            <div class="menu canvas-list">
+                <div class="canvas-content">
+                    <canvas id="Country-users" class="chart" ></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="favorites menu" id="favorites">
+        <hr>
+        <h3>
+            Favorites
+        </h3>
+        <div class="media-scroller-teachers" id="media">
+        </div>
+    </div>
+    <div class="footer menu" id="about">
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Eget nunc scelerisque viverra mauris
+            in aliquam sem fringilla. Nisl rhoncus mattis rhoncus urna neque. Neque convallis
+            a cras semper auctor neque vitae tempus quam. Donec pretium vulputate sapien nec
+            sagittis. Gravida neque convallis a cras. Et molestie ac feugiat sed lectus vestibulum mattis
+            ullamcorper velit. Tortor pretium viverra suspendisse potenti. Malesuada nunc vel risus
+            commodo viverra maecenas. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut.
+            Tellus rutrum tellus pellentesque eu. Eu sem integer vitae justo eget magna fermentum iaculis eu.
+            Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque.
+        </p>
+    </div>
+    <div class="navigation-bottom nav-footer flex">
+        <ul>
+            <li><i class="fa-regular fa-user li"></i><a href="#teachers">Teachers</a></li>
+            <li><i class="fa-solid fa-signal li"></i><a href="#statistic">Statistic</a></li>
+            <li><i class="fa-solid fa-crown li"></i><a href="#favorites">Favorites</a></li>
+            <li><i class="fa-regular fa-address-card li"></i><a href="#about">About</a></li>
+        </ul>
+        <div class="footer-icon-list">
+            <ul>
+                <li>
+                    <a>
+                        <i class="fa-brands fa-instagram li"></i>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa-brands fa-discord li"></i>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa-brands fa-telegram li"></i>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa-brands fa-twitter li"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="button whiteColor add-teacher">
+            Add teacher
+        </div>
+    </div>
+</div>
+</body>
 </html>

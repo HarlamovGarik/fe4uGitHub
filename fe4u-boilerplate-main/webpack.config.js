@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -110,6 +111,7 @@ const CONFIG = {
   devServer: {
     contentBase: path.join(__dirname, "src"),
     compress: true,
+    host: '192.168.0.105',
     port: 3001,
     hot: true,
     watchContentBase: true,

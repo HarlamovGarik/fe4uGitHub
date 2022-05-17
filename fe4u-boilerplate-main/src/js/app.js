@@ -1,6 +1,3 @@
-const testModules = require('./test-module');
+/* eslint-disable */
+require('./script');
 require('../css/app.css');
-
-/** ******** Your code here! *********** */
-
-console.log(testModules.hello);
